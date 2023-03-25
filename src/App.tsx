@@ -35,9 +35,11 @@ function App() {
         ))}
       </div>
 
-      <div>
+      <div className='text-black'>
         <textarea onChange={handleChange} value={text} style={{ width: '100%' }}></textarea>
-        <button onClick={() => sendMessage(text)}>send</button>
+        <button className='text-white' onClick={() => sendMessage(text)}>
+          send
+        </button>
       </div>
     </div>
   );
