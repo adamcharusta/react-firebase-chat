@@ -6,12 +6,13 @@ export interface IUseAuth {
   user?: User | null;
   logIn: () => Promise<void>;
   logOut: () => Promise<void>;
+  loading: boolean;
 }
 
 const useAuth = (): IUseAuth => {
   const auth = getAuth(firebaseApp);
   const [user] = useAuthState(auth);
-  const [signInWithGoogle] = useSignInWithGoogle(auth);
+  const [signInWithGoogle, , loading] = useSignInWithGoogle(auth);
   const [signOut] = useSignOut(auth);
 
   //TODO: create method of error messaging
@@ -23,7 +24,7 @@ const useAuth = (): IUseAuth => {
     await signOut().catch((err) => console.error(err));
   };
 
-  return { user, logIn, logOut };
+  return { user, logIn, logOut, loading };
 };
 
 export default useAuth;

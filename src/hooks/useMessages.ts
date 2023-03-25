@@ -28,7 +28,7 @@ const useMessages = (): IUseMessages => {
         photoURL,
         displayName,
         uid,
-        createdAt: moment().toDate().toString(),
+        createdAt: moment().toString(),
       };
 
       await addDoc(messagesCollection, payload).catch((err) => console.error(err));
@@ -46,9 +46,7 @@ const useMessages = (): IUseMessages => {
         return { ...data, id, isCurrentUserMessage };
       });
 
-      if (!result) return [];
-
-      // sort by date
+      // sort by createdAt
       return result.sort((a, b) => moment(a.createdAt).diff(moment(b.createdAt)));
     }
     return [];
