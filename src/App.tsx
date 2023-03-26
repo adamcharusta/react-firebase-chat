@@ -1,20 +1,15 @@
-import React, { ChangeEventHandler, useState } from 'react';
-import './App.css';
+import React, { useRef } from 'react';
 import useAuth from './hooks/useAuth';
-import moment from 'moment';
 import useMessages from './hooks/useMessages';
+import ChatRoomComponent from './components/ChatRoomComponent/ChatRoomComponent';
 
 function App() {
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
   const { logIn, logOut, user } = useAuth();
-  const { messages, sendMessage } = useMessages();
-  const [text, setText] = useState<string>('');
-
-  const handleChange: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
-    setText(event.target.value);
-  };
+  const { sendMessage } = useMessages();
 
   return (
-    <div className='App-header'>
+    <div className='bg-neutral-800 w-screen h-screen flex flex-col items-center text-white overflow-hidden'>
       {user ? (
         <>
           <button onClick={logOut}>LogOut</button>
@@ -24,20 +19,14 @@ function App() {
         <button onClick={logIn}>LogIn</button>
       )}
 
-      <div style={{ height: 500, overflowY: 'scroll' }}>
-        {messages.map((doc) => (
-          <p key={doc.id}>
-            <span style={{ color: doc.isCurrentUserMessage ? 'red' : 'white' }}>
-              {doc.displayName}
-            </span>
-            : <span>{doc.message}</span> <span>{moment(doc.createdAt).format('HH:mm:ss')}</span>
-          </p>
-        ))}
-      </div>
+      <ChatRoomComponent />
 
       <div className='text-black'>
-        <textarea onChange={handleChange} value={text} style={{ width: '100%' }}></textarea>
-        <button className='text-white' onClick={() => sendMessage(text)}>
+        <textarea style={{ width: '100%' }} ref={textareaRef}></textarea>
+        <button
+          className='text-white'
+          onClick={() => sendMessage(textareaRef.current?.value ? textareaRef.current?.value : '')}
+        >
           send
         </button>
       </div>
