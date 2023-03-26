@@ -11,12 +11,12 @@ const ChatRoomComponent = () => {
   }, [messages]);
 
   return (
-    <div className='h-full w-full overflow-y-scroll'>
+    <main className='h-full w-full overflow-y-scroll'>
       {messages.map((msg) => (
         <MessageComponent key={msg.id} message={msg} />
       ))}
       <div ref={scrollToBottomRef} />
-    </div>
+    </main>
   );
 };
 

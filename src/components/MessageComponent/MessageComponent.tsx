@@ -18,7 +18,7 @@ const MessageComponent = ({ message }: IMessageComponent) => {
     : 'self-end mb-5 mr-2';
 
   return (
-    <div className={containerClass}>
+    <article className={containerClass}>
       <div className={avatarContainerClass}>
         <AvatarComponent src={message.photoURL} alt={altText} />
       </div>
@@ -28,7 +28,7 @@ const MessageComponent = ({ message }: IMessageComponent) => {
         currentUser={message.isCurrentUserMessage}
         time={message.createdAt}
       />
-    </div>
+    </article>
   );
 };
 

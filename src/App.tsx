@@ -1,35 +1,23 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import useAuth from './hooks/useAuth';
-import useMessages from './hooks/useMessages';
 import ChatRoomComponent from './components/ChatRoomComponent/ChatRoomComponent';
+import NavbarComponent from './components/NavbarComponent/NavbarComponent';
+import SendMessagePanelComponent from './components/SendMessagePanelComponent/SendMessagePanelComponent';
 
 function App() {
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
-  const { logIn, logOut, user } = useAuth();
-  const { sendMessage } = useMessages();
+  const { logIn, user } = useAuth();
 
   return (
     <div className='bg-neutral-800 max-w-screen-md h-screen flex flex-col items-center text-white overflow-hidden'>
       {user ? (
         <>
-          <button onClick={logOut}>LogOut</button>
-          <p>Signed In User: {user.email}</p>
+          <NavbarComponent />
+          <ChatRoomComponent />
+          <SendMessagePanelComponent />
         </>
       ) : (
         <button onClick={logIn}>LogIn</button>
       )}
-
-      <ChatRoomComponent />
-
-      <div className='text-black'>
-        <textarea style={{ width: '100%' }} ref={textareaRef}></textarea>
-        <button
-          className='text-white'
-          onClick={() => sendMessage(textareaRef.current?.value ? textareaRef.current?.value : '')}
-        >
-          send
-        </button>
-      </div>
     </div>
   );
 }

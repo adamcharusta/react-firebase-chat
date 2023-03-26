@@ -7,6 +7,10 @@ module.exports = {
       maxWidth: {
         '3/4': '75%',
       },
+      colors: {
+        googleBlue: '#4285F4',
+        googleLightBlue: '#00A1F1',
+      },
     },
   },
   plugins: [],
