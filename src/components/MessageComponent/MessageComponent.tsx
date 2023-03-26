@@ -14,8 +14,8 @@ const MessageComponent = ({ message }: IMessageComponent) => {
     : 'w-full mt-4 flex items-end';
 
   const avatarContainerClass = message.isCurrentUserMessage
-    ? 'self-center ml-2'
-    : 'self-center mr-2';
+    ? 'self-end mb-5 ml-2'
+    : 'self-end mb-5 mr-2';
 
   return (
     <div className={containerClass}>

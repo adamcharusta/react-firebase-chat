@@ -20,7 +20,7 @@ const TextBoxComponent = memo(({ text, author, currentUser, time }: IAvatarCompo
   const backgroundColor = currentUser ? 'bg-neutral-700' : 'bg-neutral-500';
   const authorClass = currentUser
     ? 'mb-1 mr-2 text-xs text-neutral-400 self-end'
-    : 'mb-1 ml-2  text-xs text-neutral-400';
+    : 'mb-1 ml-2 text-xs text-neutral-400';
   const timeClass = currentUser
     ? 'mt-1 mr-2 text-xs text-neutral-400 self-end'
     : 'mt-1 ml-2 text-xs text-neutral-400';

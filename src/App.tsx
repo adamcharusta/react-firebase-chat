@@ -9,7 +9,7 @@ function App() {
   const { sendMessage } = useMessages();
 
   return (
-    <div className='bg-neutral-800 w-screen h-screen flex flex-col items-center text-white overflow-hidden'>
+    <div className='bg-neutral-800 max-w-screen-md h-screen flex flex-col items-center text-white overflow-hidden'>
       {user ? (
         <>
           <button onClick={logOut}>LogOut</button>

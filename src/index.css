@@ -6,8 +6,14 @@
     width: 6px;
 }
 
-
 *::-webkit-scrollbar-thumb {
     background-color: theme('colors.neutral.700');
     border-radius: 10px;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: theme('colors.neutral.800');
 }

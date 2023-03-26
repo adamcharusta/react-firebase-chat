@@ -6,7 +6,7 @@ interface IAvatarComponent {
 }
 const AvatarComponent = ({ src, alt }: IAvatarComponent) => {
   if (!src) return <></>;
-  return <img className='w-16 h-16 rounded-full' src={src} alt={alt} />;
+  return <img className='w-8 h-8 rounded-full' src={src} alt={alt} />;
 };
 
 export default AvatarComponent;
