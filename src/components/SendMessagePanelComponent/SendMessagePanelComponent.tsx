@@ -15,15 +15,19 @@ const SendMessagePanelComponent = () => {
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
-    await sendMessage(text).then(() => {
-      setText('');
-    });
+    if (text) {
+      await sendMessage(text).then(() => {
+        setText('');
+      });
+    }
   };
 
   const handleKeyDown = async () => {
-    await sendMessage(text).then(() => {
-      setText('');
-    });
+    if (text) {
+      await sendMessage(text).then(() => {
+        setText('');
+      });
+    }
   };
 
   return (

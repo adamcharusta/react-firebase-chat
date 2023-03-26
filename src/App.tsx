@@ -3,12 +3,13 @@ import useAuth from './hooks/useAuth';
 import ChatRoomComponent from './components/ChatRoomComponent/ChatRoomComponent';
 import NavbarComponent from './components/NavbarComponent/NavbarComponent';
 import SendMessagePanelComponent from './components/SendMessagePanelComponent/SendMessagePanelComponent';
+import LoginPanelComponent from './components/LoginPanelComponent/LoginPanelComponent';
 
 function App() {
-  const { logIn, user } = useAuth();
+  const { user } = useAuth();
 
   return (
-    <div className='bg-neutral-800 max-w-screen-md h-screen flex flex-col items-center text-white overflow-hidden'>
+    <div className='bg-neutral-800 w-screen max-w-screen-md h-screen flex flex-col justify-center items-center text-white overflow-hidden'>
       {user ? (
         <>
           <NavbarComponent />
@@ -16,7 +17,7 @@ function App() {
           <SendMessagePanelComponent />
         </>
       ) : (
-        <button onClick={logIn}>LogIn</button>
+        <LoginPanelComponent />
       )}
     </div>
   );
